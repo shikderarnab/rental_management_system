@@ -58,14 +58,6 @@ Copy `config/app_local.php.example` to `config/app_local.php` and update:
     // ... other Firebase config
 ],
 ```
-
-### 4. Set up Firebase
-
-1. Create a Firebase project at https://console.firebase.google.com
-2. Enable Phone Authentication
-3. Download service account JSON file and place it in `config/firebase-service-account.json`
-4. Update Firebase configuration in `config/app_local.php`
-
 ### 5. Run migrations
 
 ```bash
@@ -84,25 +76,7 @@ bin/cake migrations seed --seed UsersSeeder
 chmod -R 755 tmp logs webroot/uploads
 ```
 
-## XAMPP Setup (Recommended for Windows)
-
-### Quick Setup
-
-1. **Install XAMPP**: https://www.apachefriends.org/
-2. **Run setup script**:
-   ```powershell
-   .\setup-xampp.ps1
-   ```
-3. **Start Apache & MySQL** in XAMPP Control Panel
-4. **Create database** in phpMyAdmin: `rental_management`
-5. **Run migrations**:
-   ```powershell
-   cd C:\xampp\htdocs\rental-management
-   C:\xampp\php\php.exe bin\cake.php migrations migrate
-   ```
 6. **Access**: http://localhost/rental-management
-
-See **[XAMPP_SETUP.md](XAMPP_SETUP.md)** for detailed instructions.
 
 ## Usage
 
@@ -111,21 +85,6 @@ See **[XAMPP_SETUP.md](XAMPP_SETUP.md)** for detailed instructions.
 - **Admin**: admin@rental.com / admin123
 - **Landlord**: landlord@rental.com / landlord123
 - **Tenant**: tenant@rental.com / tenant123
-
-### Setting up Cron Job for Reminders
-
-#### Windows (Task Scheduler)
-1. Open Task Scheduler
-2. Create Basic Task
-3. Trigger: Daily at 9 AM
-4. Action: Start a program
-5. Program: `C:\xampp\php\php.exe`
-6. Arguments: `C:\xampp\htdocs\rental-management\bin\cake.php reminder`
-
-#### Linux/Mac (Crontab)
-```bash
-0 9 * * * cd /path/to/rental-management && bin/cake reminder
-```
 
 ## API Endpoints
 
@@ -200,41 +159,6 @@ Email notifications are sent via Firebase Cloud Functions (requires deployment):
 - File upload validation
 - Role-based access control
 - SQL injection prevention (CakePHP ORM)
-
-## Testing
-
-```bash
-bin/cake test
-```
-
-## Troubleshooting
-
-### Firebase SMS not working
-
-1. Verify Firebase API key is correct
-2. Check Phone Authentication is enabled in Firebase Console
-3. Ensure phone numbers are in E.164 format (+1234567890)
-
-### Email not sending
-
-1. Verify Firebase Cloud Functions are deployed
-2. Check service account JSON file path
-3. Review logs in `logs/error.log`
-
-### File upload issues
-
-1. Check `webroot/uploads` directory permissions
-2. Verify PHP upload_max_filesize and post_max_size settings
-
-## License
-
-MIT License
-
-## Architecture Documentation
-
-For detailed architecture information, see:
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Complete system architecture documentation
-- **[ARCHITECTURE_DIAGRAMS.md](ARCHITECTURE_DIAGRAMS.md)** - Visual architecture diagrams
 
 ## Support
 
