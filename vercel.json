@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "echo 'Skipping build - vercel-php runtime will handle dependencies'",
   "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.7.4",
