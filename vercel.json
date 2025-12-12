@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "curl -sS https://getcomposer.org/installer | php && php composer.phar install --no-dev --optimize-autoloader --no-interaction",
   "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.7.4",
-      "excludeFiles": "{.git,logs,tmp,node_modules,firebase,frontend,tests,bin,*.md,*.pdf,composer.phar,composer-setup.php,webroot/uploads}/**"
+      "excludeFiles": "{.git,logs,tmp,node_modules,firebase,frontend,tests,bin,*.md,*.pdf,composer.phar,composer-setup.php,webroot/uploads,vendor/cakephp/debug_kit,vendor/phpunit,vendor/cakephp/cakephp-codesniffer,vendor/cakephp/bake,vendor/**/tests,vendor/**/Tests,vendor/**/test,vendor/**/docs,vendor/**/doc,vendor/**/*.md,vendor/**/*.txt,vendor/**/.git}/**"
     }
   },
   "routes": [
