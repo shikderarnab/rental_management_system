@@ -1,8 +1,10 @@
 {
   "version": 2,
+  "buildCommand": "composer install --no-dev --optimize-autoloader",
   "functions": {
     "api/*.php": {
-      "runtime": "vercel-php@0.7.4"
+      "runtime": "vercel-php@0.7.4",
+      "excludeFiles": "{.git,logs,tmp,node_modules,firebase,frontend,tests,bin,*.md,*.pdf,composer.phar,composer-setup.php,webroot/uploads}/**"
     }
   },
   "routes": [

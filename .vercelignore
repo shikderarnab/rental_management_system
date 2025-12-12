@@ -1,0 +1,56 @@
+# Composer vendor directory (will be installed during build)
+vendor/
+
+# Logs and temporary files
+logs/
+tmp/
+*.log
+
+# Development files
+composer.phar
+composer-setup.php
+.git/
+.gitignore
+
+# Documentation
+*.md
+*.pdf
+PROJECT_SUMMARY.md
+QUICK_START.md
+README.md
+Rental Management System — Project Report.pdf
+
+# Node modules (if not needed for PHP)
+node_modules/
+package-lock.json
+
+# Firebase functions (separate deployment)
+firebase/
+
+# Frontend static files (if not needed)
+frontend/
+
+# Test files
+tests/
+phpunit.xml
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Uploads directory (might be large - exclude if not needed initially)
+webroot/uploads/
+
+# Example config files
+config/app_local.php.example
+
+# Bin directory (CLI tools not needed for serverless)
+bin/
+
