@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "webroot/index.php",
+      "use": "@vercel/php"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/webroot/index.php"
+    }
+  ],
+  "env": {
+    "APP_ENV": "production"
+  }
+}
+
+

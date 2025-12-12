@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    # Serve landing page at root (http://localhost/rental-management/)
+    RewriteRule    ^$    webroot/rental-management/index.html    [L]
+    # Default rewrite to webroot (handles /rental-management/rms-logo.png -> webroot/rental-management/rms-logo.png)
+    RewriteRule    (.*) webroot/$1    [L]
+</IfModule>
+

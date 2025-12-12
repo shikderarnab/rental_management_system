@@ -1,0 +1,36 @@
+<?php
+/*
+ * Local configuration file to provide any overrides to your app.php configuration.
+ * This file is loaded after app.php
+ */
+return [
+    'debug' => true,
+    'Security' => [
+        'salt' => env('SECURITY_SALT', '__CHANGE_THIS_SALT__'),
+    ],
+    'Datasources' => [
+        'default' => [
+            'host' => 'localhost',
+            'username' => 'root',
+            'password' => '',
+            'database' => 'rental_management',
+        ],
+    ],
+    'EmailTransport' => [
+        'default' => [
+            'host' => 'localhost',
+            'port' => 587,
+            'username' => null,
+            'password' => null,
+        ],
+    ],
+    'Firebase' => [
+        'apiKey' => 'your-firebase-api-key',
+        'authDomain' => 'your-project.firebaseapp.com',
+        'projectId' => 'your-project-id',
+        'storageBucket' => 'your-project.appspot.com',
+        'messagingSenderId' => 'your-sender-id',
+        'appId' => 'your-app-id',
+        'serviceAccountPath' => ROOT . DS . 'config' . DS . 'firebase-service-account.json',
+    ],
+];

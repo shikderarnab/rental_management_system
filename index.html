@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rental Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: #f5f7fb;
+            color: #101827;
+        }
+        .navbar-brand-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: #0f172a;
+            color: #4f46e5;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+        }
+        .hero-section {
+            padding: 4.5rem 1rem 3.5rem;
+            background: radial-gradient(circle at top, #e0ebff 0, #f5f7fb 55%);
+        }
+        .hero-title-highlight {
+            color: #2563eb;
+        }
+        .hero-kicker {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #6366f1;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .hero-title {
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+        .hero-subtitle {
+            color: #4b5563;
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            border-color: #1d4ed8;
+        }
+        .btn-outline-secondary {
+            border-width: 1.5px;
+        }
+        .brand-logo {
+            /* Header logo size – adjust height to control overall size */
+            height: 52px;
+            width: auto;
+            display: block;
+        }
+        .brand-logo-footer {
+            /* Footer logo size – slightly smaller but still prominent */
+            height: 40px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        .features-section {
+            padding: 3rem 1rem 4rem;
+        }
+        .pill-tabs {
+            border-radius: 999px;
+            background-color: #e5e7eb;
+            display: inline-flex;
+            padding: 0.25rem;
+        }
+        .pill-tabs button {
+            border-radius: 999px;
+            border: none;
+            padding: 0.4rem 1.3rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: transparent;
+            color: #4b5563;
+        }
+        .pill-tabs button.active {
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+            color: #111827;
+        }
+        .tab-panel {
+            display: none;
+        }
+        .tab-panel.active {
+            display: block;
+        }
+        .feature-card {
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+            background-color: #ffffff;
+            padding: 1.5rem;
+            height: 100%;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+        }
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #eff6ff;
+            color: #2563eb;
+            margin-bottom: 0.75rem;
+        }
+        .feature-list {
+            padding-left: 1.2rem;
+            margin-bottom: 0;
+        }
+        .feature-list li {
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-bottom: 0.25rem;
+        }
+        .feature-list li::marker {
+            color: #22c55e;
+        }
+        .cta-section {
+            background-color: #0f172a;
+            color: #e5e7eb;
+            padding: 3rem 1rem 3.25rem;
+        }
+        .footer-main {
+            background-color: #020617;
+            color: #e5e7eb;
+            padding: 3rem 1rem 1.5rem;
+        }
+        .footer-logo-text {
+            font-weight: 700;
+        }
+        .footer-link {
+            display: block;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            text-decoration: none;
+            margin-bottom: 0.4rem;
+        }
+        .footer-link:hover {
+            color: #e5e7eb;
+        }
+        .footer-bottom {
+            border-top: 1px solid #111827;
+            margin-top: 2rem;
+            padding-top: 1.25rem;
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+        .footer-dev-link {
+            color: #e5e7eb;
+            text-decoration: none;
+        }
+        .footer-dev-link:hover {
+            color: #ffffff;
+        }
+        .footer-main .footer-description {
+            color: #e5e7eb;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top navigation -->
+    <nav class="navbar navbar-expand-lg bg-white border-bottom">
+        <div class="container py-2">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="rms-logo.png" alt="Rental Management System" class="brand-logo">
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <!-- Later you can point this to /rental-management/login -->
+                <a href="http://localhost/rental-management/login" class="btn btn-sm btn-link text-secondary text-decoration-none">Sign In</a>
+                <!-- Change href to your signup/onboarding URL when ready -->
+                <a href="http://localhost/rental-management/register" class="btn btn-sm btn-primary rounded-pill px-3">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <div class="hero-kicker mb-2">Property Management Solution</div>
+                    <h1 class="hero-title display-5 mb-3">
+                        Complete Rental Management <span class="hero-title-highlight">System</span>
+                    </h1>
+                    <p class="hero-subtitle lead mb-4">
+                        Streamline your rental operations with our comprehensive platform.
+                        Manage properties, tenants, payments, and agreements all in one place.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 mb-5 flex-wrap">
+                        <!-- Change href to your real signup/free-trial URL -->
+                        <a href="http://localhost/rental-management/register" class="btn btn-primary btn-lg rounded-pill px-4">
+                            Start Free Trial
+                        </a>
+                        <!-- Change href to a demo/overview page or video -->
+                        <a href="http://localhost/rental-management/login" class="btn btn-outline-secondary btn-lg rounded-pill px-4">
+                            View Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-4">
+                <div class="col-lg-8">
+                    <h2 class="h3 fw-bold mb-2">Everything You Need to Manage Rentals</h2>
+                    <p class="text-muted mb-3">
+                        Powerful features designed for landlords, tenants, and property administrators.
+                    </p>
+                    <div class="pill-tabs mt-2">
+                        <button class="active" type="button" data-target="tab-overview">Overview</button>
+                        <button type="button" data-target="tab-landlords">For Landlords</button>
+                        <button type="button" data-target="tab-tenants">For Tenants</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overview tab -->
+            <div id="tab-overview" class="tab-panel active">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-house-door"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Property Management</h5>
+                            <p class="text-muted mb-2">Manage multiple properties and units with ease.</p>
+                            <ul class="feature-list">
+                                <li>Unit inventory overview</li>
+                                <li>Occupancy tracking</li>
+                                <li>Maintenance notes</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Digital Agreements</h5>
+                            <p class="text-muted mb-2">Create and manage digital rental agreements.</p>
+                            <ul class="feature-list">
+                                <li>Customizable templates</li>
+                                <li>Centralized contracts</li>
+                                <li>Secure storage</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-credit-card"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Payment Processing</h5>
+                            <p class="text-muted mb-2">Track rent payments and outstanding balances.</p>
+                            <ul class="feature-list">
+                                <li>Payment history overview</li>
+                                <li>Due amount tracking</li>
+                                <li>Basic reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-bell"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Smart Notifications</h5>
+                            <p class="text-muted mb-2">Stay ahead with reminders and alerts.</p>
+                            <ul class="feature-list">
+                                <li>Upcoming rent reminders</li>
+                                <li>Contract renewal alerts</li>
+                                <li>Maintenance follow-ups</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-chat-square-dots"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Dispute Management</h5>
+                            <p class="text-muted mb-2">Log and track disputes from start to resolution.</p>
+                            <ul class="feature-list">
+                                <li>Central dispute log</li>
+                                <li>Status tracking</li>
+                                <li>Communication history</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Secure &amp; Reliable</h5>
+                            <p class="text-muted mb-2">Keep your rental data safe and organized.</p>
+                            <ul class="feature-list">
+                                <li>Role-based access</li>
+                                <li>Activity tracking</li>
+                                <li>Backup-friendly design</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- For Landlords tab -->
+            <div id="tab-landlords" class="tab-panel">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Tenant Management</h5>
+                            <p class="text-muted mb-2">
+                                Complete tenant profiles with background checks and rental history.
+                            </p>
+                            <ul class="feature-list">
+                                <li>Tenant screening</li>
+                                <li>Rental history tracking</li>
+                                <li>Communication logs</li>
+                                <li>Document management</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-bag-check"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Payment Verification</h5>
+                            <p class="text-muted mb-2">
+                                Verify and track manual payments with proof of transaction.
+                            </p>
+                            <ul class="feature-list">
+                                <li>Payment proof upload</li>
+                                <li>Verification workflow</li>
+                                <li>Automated receipts</li>
+                                <li>Financial reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Portfolio Insights</h5>
+                            <p class="text-muted mb-2">
+                                Understand the performance of your entire rental portfolio.
+                            </p>
+                            <ul class="feature-list">
+                                <li>Occupancy and vacancy metrics</li>
+                                <li>Revenue and arrears overview</li>
+                                <li>Top-performing units</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-tools"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Maintenance &amp; Tasks</h5>
+                            <p class="text-muted mb-2">
+                                Keep track of maintenance requests and follow-ups.
+                            </p>
+                            <ul class="feature-list">
+                                <li>Task assignment and status</li>
+                                <li>Cost notes and attachments</li>
+                                <li>History per unit and tenant</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- For Tenants tab -->
+            <div id="tab-tenants" class="tab-panel">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-file-earmark-lock"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Digital Documentation</h5>
+                            <p class="text-muted mb-2">
+                                Sign agreements and keep important documents in one place.
+                            </p>
+                            <ul class="feature-list">
+                                <li>Digital contract signing</li>
+                                <li>Secure document uploads</li>
+                                <li>Payment history tracking</li>
+                                <li>Document downloads</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-person-badge"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Tenant Portal</h5>
+                            <p class="text-muted mb-2">
+                                Give tenants a clear view of their rental status.
+                            </p>
+                            <ul class="feature-list">
+                                <li>Upcoming payments overview</li>
+                                <li>Contract details in one place</li>
+                                <li>Dispute and request history</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-7 mb-3 mb-lg-0">
+                    <h2 class="h3 fw-bold mb-2">Ready to Transform Your Rental Management?</h2>
+                    <p class="mb-0 text-secondary">
+                        Join property owners and managers who trust Rental Management System
+                        to run their daily operations.
+                    </p>
+                </div>
+                <div class="col-lg-3 text-lg-end">
+                    <!-- Change href to your real signup/free-trial URL -->
+                    <a href="#" class="btn btn-primary btn-lg rounded-pill px-4">
+                        Start Free Trial
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <img src="rms-logo.png" alt="Rental Management System" class="brand-logo-footer me-2">
+                    </div>
+                    <p class="footer-description mb-0" style="font-size: 0.9rem;">
+                        Complete rental management solution for modern property businesses.
+                    </p>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="fw-semibold mb-2">Product</h6>
+                    <a href="#" class="footer-link">Features</a>
+                    <a href="#" class="footer-link">Pricing</a>
+                    <a href="#" class="footer-link">Security</a>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="fw-semibold mb-2">Company</h6>
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">Blog</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="fw-semibold mb-2">Support</h6>
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">API Docs</a>
+                    <a href="#" class="footer-link">Status</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <span>&copy; 2025 Rental Management System. All rights reserved.</span>
+                <span>
+                    Developed by
+                    <a href="https://github.com/tasinjaber" target="_blank" rel="noopener noreferrer" class="footer-dev-link">Tasin</a>
+                    &amp;
+                    <a href="https://github.com/shikderarnab" target="_blank" rel="noopener noreferrer" class="footer-dev-link">Arnab</a>.
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple tab switching for features section
+        (function () {
+            var buttons = document.querySelectorAll('.pill-tabs button');
+            var panels = document.querySelectorAll('.tab-panel');
+
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var targetId = this.getAttribute('data-target');
+                    if (!targetId) return;
+
+                    // Update active state on buttons
+                    buttons.forEach(function (b) { b.classList.remove('active'); });
+                    this.classList.add('active');
+
+                    // Show correct panel
+                    panels.forEach(function (panel) {
+                        if (panel.id === targetId) {
+                            panel.classList.add('active');
+                        } else {
+                            panel.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
