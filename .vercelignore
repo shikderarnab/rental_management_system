@@ -1,5 +1,5 @@
-# Composer vendor directory (will be installed during build)
-vendor/
+# Composer vendor directory (needed - will be optimized during build)
+# vendor/
 
 # Logs and temporary files
 logs/
