@@ -1,14 +1,14 @@
 {
   "version": 2,
   "functions": {
-    "webroot/index.php": {
+    "api/*.php": {
       "runtime": "vercel-php@0.7.4"
     }
   },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/webroot/index.php"
+      "dest": "/api/index.php"
     }
   ],
   "env": {
