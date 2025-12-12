@@ -1,0 +1,9 @@
+{
+  "name": "rental-management-system",
+  "version": "1.0.0",
+  "description": "Rental Management System",
+  "dependencies": {
+    "vercel-php": "^0.7.4"
+  }
+}
+
